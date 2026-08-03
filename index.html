@@ -456,11 +456,12 @@
       留下你的資訊，我會親自與你聯繫。
     </p>
 
-    <form class="contact__form" id="contactForm" method="POST" novalidate>
+    <form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
       <!-- Web3Forms hidden fields -->
       <input type="hidden" name="access_key" value="97079e2e-96a0-4da7-bbcd-91dca05546e6" />
       <input type="hidden" name="subject" value="新諮詢 · Johnny Wei 個人品牌網站" />
       <input type="hidden" name="from_name" value="Johnny Wei 網站訪客" />
+      <input type="hidden" name="redirect" value="https://johnnywei.zeabur.app/?sent=1" />
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div class="contact__row">

@@ -69,45 +69,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ══════════════════════════════════════════════
-// Contact form (Web3Forms AJAX)
+// Contact form — Web3Forms native POST redirect flow
+// Detects ?sent=1 param (returned from Web3Forms after successful submission)
+// and shows success message, then cleans URL.
 // ══════════════════════════════════════════════
+(function handleFormSuccess() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') !== '1') return;
+
+  const result = document.getElementById('contactResult');
+  if (!result) return;
+
+  result.classList.remove('is-error');
+  result.classList.add('is-success');
+  result.textContent = '✓ 訊息已送出，我會在 48 小時內親自回覆你。感謝你的信任。';
+
+  setTimeout(() => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 400);
+
+  // Clean URL so refresh doesn't keep showing the message
+  window.history.replaceState({}, '', window.location.pathname);
+})();
+
+// Visual: disable button briefly while form submits (prevents double-click)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   const submitBtn = document.getElementById('contactSubmit');
-  const result = document.getElementById('contactResult');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    result.className = 'contact__result';
-    result.textContent = '';
-    submitBtn.disabled = true;
-    submitBtn.textContent = '送出中…';
-
-    const formData = new FormData(contactForm);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: json,
-      });
-      const data = await res.json();
-      if (data.success) {
-        result.classList.add('is-success');
-        result.textContent = '✓ 訊息已送出，我會在 48 小時內親自回覆你。感謝！';
-        contactForm.reset();
-      } else {
-        result.classList.add('is-error');
-        result.textContent = data.message || '送出失敗，請稍後再試，或直接透過 LINE 聯繫。';
-      }
-    } catch (err) {
-      result.classList.add('is-error');
-      result.textContent = '網路錯誤，請稍後再試。';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = '送出 · 開啟對話';
+  contactForm.addEventListener('submit', () => {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送出中…';
     }
   });
 }
