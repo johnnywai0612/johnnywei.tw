@@ -1,0 +1,4 @@
+.DS_Store
+assets/ai_variants/
+node_modules/
+*.log
