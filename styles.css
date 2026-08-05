@@ -484,7 +484,6 @@ button { border: 0; background: transparent; cursor: pointer; font-family: inher
   object-fit: cover;
   object-position: center top;
   display: block;
-  filter: brightness(0.94) contrast(1.06) saturate(0.9);
   position: relative;
   z-index: 1;
 }
