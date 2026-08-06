@@ -20,6 +20,7 @@
 
   --serif: 'Cormorant Garamond', 'Noto Serif TC', Georgia, serif;
   --serif-tc: 'Noto Serif TC', 'Cormorant Garamond', serif;
+  --serif-display: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
   --sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
   --sans-tc: 'Noto Sans TC', 'Inter', sans-serif;
 
@@ -540,16 +541,18 @@ button { border: 0; background: transparent; cursor: pointer; font-family: inher
   text-align: center;
 }
 .numbers__value {
-  font-family: var(--serif);
+  font-family: var(--serif-display);
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: 1;
   color: var(--gold);
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 1rem;
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 0.15rem;
+  gap: 0.1rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 .numbers__plus { font-size: 0.5em; }
 .numbers__label {
