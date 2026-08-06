@@ -383,11 +383,12 @@ button { border: 0; background: transparent; cursor: pointer; font-family: inher
   font-weight: 600;
 }
 .badge__label {
-  font-family: var(--sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-top: 0.25rem;
+  font-family: var(--sans-tc);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+  max-width: 12ch;
 }
 
 .hero__scroll {
