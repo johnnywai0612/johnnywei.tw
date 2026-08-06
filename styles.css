@@ -430,11 +430,25 @@ button { border: 0; background: transparent; cursor: pointer; font-family: inher
 }
 .about__lead {
   font-family: var(--serif-tc);
-  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
   color: var(--white);
   line-height: 1.5;
-  margin: 0 0 2rem;
+  margin: 0 0 0.75rem;
   font-weight: 500;
+}
+.about__sub-lead {
+  font-family: var(--sans-tc);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--mist);
+  letter-spacing: 0.05em;
+  line-height: 1.75;
+  margin: 0 0 2.5rem;
+}
+.about__sub-lead .sep {
+  color: var(--gold);
+  margin: 0 0.6em;
+  opacity: 0.55;
+  font-weight: 300;
 }
 .about__body {
   font-size: 1rem;
